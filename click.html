@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clickjacking Attack</title>
+    <style>
+        iframe {
+            position: absolute;
+            top: 310px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            border: #007bff;
+        }
+        .button-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            opacity: 0;
+            z-index: 9999; /* Ensure button is on top of the iframe */
+        }
+    </style>
+</head>
+<body>
+    <!-- <h1>Clickjacking Attack</h1>
+    <p>Click the button below to trigger clickjacking:</p> -->
+    <!-- Button overlaying the iframe -->
+    <button class="button-overlay" onclick="launchAttack()">Launch Attack</button>
+    <!-- Hidden iframe loading index.html -->
+    <iframe src="./index.html" width="100%" height="100%"></iframe>
+    <script>
+        function launchAttack() {
+            alert("Clickjacking attack launched!");
+        }
+    </script>
+</body>
+</html>
